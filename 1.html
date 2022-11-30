@@ -5,49 +5,56 @@
   <title>Homework</title>
 </head>
 <body>
+<!--
+Обязательное задание.
 
+Необходимо данное задание выполнить в es5 стиле и в es6 стиле.
+Необходимо создать функцию-конструктор/класс для продукта.
+Названия: `ProductES5` для es5 стиля, `ProductES6` для es6 стиля.
+При создании объекта от функции-конструктора/класса необходимо передавать имя
+и цену товара, эта информация должна быть сохранена в объекте.
+Также у объекта должна быть возможность выполнить метод `make25Discount`, данный
+метод должен уменьшать стоимость продукта на 25%.
+Необходимо продемонстрировать работу с объектом (в свободной форме).
+-->
 <script>
   "use strict";
 
-  // Задание 1
-
-  function ConvertNumberFunction(num) {
-    if (num > 999) {
-      console.log("Число должно быть трехзначное");
-    }
-    const units = num % 10;
-    const dozens = ((num - units) / 10) % 10;
-    const hundreds = (num - dozens * 10 - units) / 100;
-    this["единицы"] = units;
-    this["десятки"] = dozens;
-    this["сотни"] = hundreds;
+  function ProductES5(product, price) {
+    this.product = product;
+    this.price = price;
   }
 
-  const conversationWithFunction = new ConvertNumberFunction(1900);
-  console.log(conversationWithFunction);
-
-  class ConvertNumberClass {
-    constructor(num) {
-      this.num = num;
-    }
-    convertNum() {
-      const units = this.num % 10;
-      const dozens = ((this.num - units) / 10) % 10;
-      const hundreds = (this.num - dozens * 10 - units) / 100;
-      if (this.num > 999) {
-        return "Число должно быть трехзначное";
-      } else {
-        return {
-          единицы: units,
-          десятки: dozens,
-          сотни: hundreds,
-        };
-      }
+  ProductES5.prototype.make25Discount = function () {
+    return {
+      product: this.product,
+      price: this.price *= 0.75
     }
   }
 
-  const conversationWithClass = new ConvertNumberClass(234);
-  console.log(conversationWithClass.convertNum());
+  const productES5 = new ProductES5("phone", 30000);
+  console.log(productES5);
+  productES5.make25Discount()
+  console.log(productES5);
+
+  class ProductES6 {
+    constructor(product, price) {
+      this.product = product;
+      this.price = price;
+    }
+    make25Discount() {
+      return {
+        product: this.product,
+        price: (this.price *= 0.75),
+      };
+    }
+  }
+
+  const productES6 = new ProductES6("laptop", 60000);
+  console.log(productES6);
+  productES6.make25Discount();
+  console.log(productES6);
+
 
 </script>
 </body>
