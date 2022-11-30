@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Homework</title>
+</head>
+<body>
+
+<script>
+  "use strict";
+
+  // Задание 1
+
+  function ConvertNumberFunction(num) {
+    if (num > 999) {
+      console.log("Число должно быть трехзначное");
+    }
+    const units = num % 10;
+    const dozens = ((num - units) / 10) % 10;
+    const hundreds = (num - dozens * 10 - units) / 100;
+    this["единицы"] = units;
+    this["десятки"] = dozens;
+    this["сотни"] = hundreds;
+  }
+
+  const conversationWithFunction = new ConvertNumberFunction(1900);
+  console.log(conversationWithFunction);
+
+  class ConvertNumberClass {
+    constructor(num) {
+      this.num = num;
+    }
+    convertNum() {
+      const units = this.num % 10;
+      const dozens = ((this.num - units) / 10) % 10;
+      const hundreds = (this.num - dozens * 10 - units) / 100;
+      if (this.num > 999) {
+        return "Число должно быть трехзначное";
+      } else {
+        return {
+          единицы: units,
+          десятки: dozens,
+          сотни: hundreds,
+        };
+      }
+    }
+  }
+
+  const conversationWithClass = new ConvertNumberClass(234);
+  console.log(conversationWithClass.convertNum());
+
+</script>
+</body>
+</html>

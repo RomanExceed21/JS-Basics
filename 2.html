@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Homework</title>
+</head>
+<body>
+
+<script>
+  "use strict";
+
+  // Задание 2
+   /** Массив products был в прошлом задании в таком виде
+    все задания делались с яндекс диска, а не из методички
+
+    const products = [
+      {
+        id: 3,
+        price: 200,
+      },
+      {
+        id: 4,
+        price: 900,
+      },
+      {
+        id: 1,
+        price: 1000,
+      },
+    ]; **/
+  
+  let productsCount = null;
+
+  function OneProductFunc(id, price) {
+    this.id = id;
+    this.price = price;
+  }
+
+  class OneProductClass {
+    constructor(id, price) {
+      this.id = id;
+      this.price = price;
+    }
+    getProduct() {
+      return {
+        id: this.id,
+        price: this.price,
+      };
+    }
+  }
+
+  const product1 = new OneProductClass(3, 200);
+  const product2 = new OneProductClass(4, 900);
+  const product3 = new OneProductClass(1, 1000);
+
+  const products1 = [
+    new OneProductFunc(3, 200),
+    new OneProductFunc(4, 900),
+    new OneProductFunc(1, 1000),
+  ];
+
+  const products2 = [
+    product1.getProduct(),
+    product2.getProduct(),
+    product3.getProduct(),
+  ];
+
+  for (let i = 0; i < products2.length; i++) {
+    productsCount += products2[i].price;
+  }
+
+  console.log(products1);
+  console.log(products2);
+  console.log(productsCount);
+  
+</script>
+</body>
+</html>
